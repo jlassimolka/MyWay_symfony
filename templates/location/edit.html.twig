@@ -1,0 +1,26 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Edit Location{% endblock %}
+
+{% block tableau %}
+<div class="col-xl-0">
+
+									<!--begin::Charts Widget 1-->
+									
+										<!--begin::Header-->
+										<div class="card-header border-0 pt-5">
+                                        <div class="container">
+
+                                        <div class="card card-xl-stretch mb-5 mb-xl-8" style="width: 780px;">
+										<!--begin::Header-->
+										<div class="card-header border-0 pt-5">
+    <h1>Edit Location</h1>
+    {{ include('location/_form.html.twig', {'button_label': 'Update'}) }}
+        <a href="{{ path('app_location_index') }}" class="btn btn-secondary me-3" >back to list</a>
+        {{ include('location/_delete_form.html.twig') }}
+</div>
+       </div>
+          </div>
+             </div>
+                </div>
+{% endblock %}

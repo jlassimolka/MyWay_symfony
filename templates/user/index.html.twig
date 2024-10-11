@@ -1,0 +1,104 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block tableau %}
+<div class="col-xl-0">
+
+									<!--begin::Charts Widget 1-->
+									
+										<!--begin::Header-->
+										
+                                        <div class="container">
+
+                                        <div class="card card-xl-stretch mb-5 mb-xl-8" style="width: 1000px;">
+										<!--begin::Header-->
+										
+
+
+<div class="container-fluid py-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="card my-4">
+          <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+            <div class="bg-gradient-info shadow-info border-radius-lg pt-4 pb-3">
+              <h6 class="text-white text-capitalize ps-3">Liste des Users</h6>
+            </div>
+          </div>
+          <div class="card-body px-0 pb-2">
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <form method="POST">
+                {{ form_start(form) }}
+                  <div class="flex row align-content-center" >
+                      {{ form_widget(form.field_name, {'attr': {'class': 'form-control border', 'placeholder': 'Search'}}) }}
+                      <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                  </div>
+                {{ form_end(form) }}
+            </form>
+        </div>
+    </div>
+</div>
+
+            <div class="table-responsive p-0">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2" >Id</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2" >Nom</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2" >Prenom</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2" >NumTel</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2" >Email</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2" >IsActive</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2" >Image</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2" >role</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2" >actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+                <td>{{ user.phone }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.isActive ? 'Yes' : 'No' }}</td>
+                <td><img style="border-radius:50%" width="36" height="36" src="{{ asset("uploads/images/" ~ user.image) }}" /></td>
+                {% if user.role is not null %}
+                    <td><b>{{ user.role.role }}</b></td>
+                {% else %}
+                    <td><b>NOT ASSIGNED</b></td>
+                {% endif %}
+
+                <td>
+                    <a class="btn btn-sm btn-info" href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
+                    <a class="btn btn-sm btn-{{ user.isActive ? "danger" : "info" }}" href="{{ path('app_user_disable', {'id': user.id}) }}">{{ user.isActive ? 'Disable' : 'Activate' }}</a>
+                    <a class="btn btn-sm btn-behance" href="{{ path('app_user_role', {'id': user.id}) }}">Change Role</a>
+                    <a class="btn btn-sm btn-dark" href="{{ path('app_user_pdf', {'id': user.id}) }}">PDF</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  </div>
+        </div>
+      </div>
+    
+
+{% endblock %}

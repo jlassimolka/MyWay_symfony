@@ -1,0 +1,47 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Statistiques d'âge des guides{% endblock %}
+
+{% block tableau %}
+<div class="col-xl-0">
+
+									<!--begin::Charts Widget 1-->
+									
+										<!--begin::Header-->
+										<div class="card-header border-0 pt-5">
+                                        <div class="container">
+
+                                        <div class="card card-xl-stretch mb-5 mb-xl-8" style="width: 780px;">
+										<!--begin::Header-->
+										<div class="card-header border-0 pt-5"> 
+    <h1>Statistiques d'âge des guides</h1>
+    <p>Nombre total de guides : {{ ageStats.totalGuides }}</p>
+    <p>Âge moyen des guides : {{ ageStats.avgAge }}</p>
+
+
+    <!-- servira de conteneur pour le graphique en batonnets -->
+    <canvas id="ageStatsChart"></canvas> 
+
+    <script>
+        var ageStatsData = {
+            labels: ['Total', 'Moyenne'], 
+            datasets: [{
+                label: 'Statistiques d\'âge des guides',
+                data: [{{ ageStats.totalGuides }}, {{ ageStats.avgAge }}],
+                backgroundColor: ['#595959', '#80cbc4']
+            }]
+        };
+        
+        var ageStatsChart = new Chart(document.getElementById('ageStatsChart'), {
+            type: 'bar',
+            data: ageStatsData
+        });
+    </script>
+    
+
+</div>
+    </div>
+     </div>
+    </div>
+     </div>
+{% endblock %}

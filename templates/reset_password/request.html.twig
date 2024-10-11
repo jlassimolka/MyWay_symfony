@@ -1,0 +1,27 @@
+{% extends 'registration/register.html.twig' %}
+
+{% block title %}Reset your password{% endblock %}
+
+{% block body %}
+    {% for flash_error in app.flashes('reset_password_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+    
+            <h4 class="font-weight-bolder">Reset Password</h4>
+        <p class="mb-0">Enter your information</p>
+    
+
+    {{ form_start(requestForm) }}
+                    <div class="input-group input-group-outline mb-3">
+                        {{ form_row(requestForm.email, {'attr': {'class': 'form-control password-field', 'placeholder': 'confirm password' }}) }}
+                    </div>
+        <div>
+            <small>
+                Enter your email address and we will send you a
+                link to reset your password.
+            </small>
+        </div>
+
+        <button class="btn btn-primary">Send password reset email</button>
+    {{ form_end(requestForm) }}
+{% endblock %}

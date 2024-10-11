@@ -1,0 +1,36 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Edit ContratLocation{% endblock %}
+
+{% block tableau %}
+<div class="col-xl-0">
+
+									<!--begin::Charts Widget 1-->
+									
+										<!--begin::Header-->
+										<div class="card-header border-0 pt-5">
+                                        <div class="container">
+
+                                        <div class="card card-xl-stretch mb-5 mb-xl-8" style="width: 780px;">
+										<!--begin::Header-->
+										<div class="card-header border-0 pt-5">
+
+<div class="container" >
+    <div class="card border-primary mb-3">
+        <div class="card-header">
+            <h1 class="card-title">Edit ContratLocation</h1>
+        </div>
+        <div class="card-body">
+            {{ include('contrat/_form.html.twig', {'button_label': 'Update'}) }}
+            <a class="btn btn-secondary" href="{{ path('app_contrat_index') }}">Back to list</a>
+            {{ include('contrat/_delete_form.html.twig') }}
+        </div>
+    </div>
+</div>
+
+     </div>
+    </div>
+</div>
+  </div>
+</div>
+{% endblock %}
